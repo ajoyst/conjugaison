@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Review</title>
+    <style>
+    body {
+      text-align:center;
+      padding-top: 50px;
+      font-family: sans-serif;
+    }
+    #cardButton {
+      background-color: white;
+      height: 300px;
+      width: 500px;
+    }
+    #backButton {
+      background-color: lightgray;
+      height: 50px;
+      width: 100px;
+    }
+    #nextButton {
+      background-color: lightgray;
+      height: 50px;
+      width: 100px;
+    }
+    #homeButton {
+      background-color: cornflowerblue;
+      border: none;
+      color: white;
+      padding: 15px 132px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+    </style>
+  </head>
+  <body>
+    <div id = "reviewGame">
+        <h1> Conjugaison!</h>
+        <h4> Click through the cards to review your tenses.</h4>
+        <p> Clicking the card will flip it over the show the answer. <br>
+          When you are ready to go to the next card, click "next." </p>
+        //filters for verbs and tenses here eventually//
+    </div>
+    <div id = "reviewCard">
+        <button id = "cardButton">
+            <div id = "cardContent">
+                <h1 id = "topHalf"></h1>
+                <h5 id = "englishHalf"></h5>
+                <h3 id = "bottomHalf"></h3>
+            </div>
+        </button>
+    </div>
+    <p></p>
+    <button id = "backButton">Back</button>
+    <button id = "nextButton">Next</button>
+    <p></p>
+    <a href="index" id = "homeButton">Return to Home</a>
+    <script src="library.js" charset="utf-8"></script>
+    <script src="verbs.js" charset="utf-8"></script>
+    <script src="reviewScript.js" charset="utf-8"></script>
+  </body>
+</html>

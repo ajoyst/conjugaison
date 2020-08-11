@@ -18,6 +18,27 @@ const getConjugations = (request, response) => {
   })
 }
 
+var path = require('path');
+
+// viewed at http://localhost:8080
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', function(req, res) {
+  res.render('index', {});
+});
+app.get('/review', function(req, res) {
+  res.render('review', {});
+});
+app.get('/quiz', function(req, res) {
+    res.render('quiz', {});
+});
+app.get('/overview', function(req, res) {
+    res.render('overview', {});
+});
+
 app
   .route('/conjugations')
   // GET endpoint

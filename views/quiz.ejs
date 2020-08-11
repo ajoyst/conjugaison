@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Quiz!</title>
+    <style>
+    body {
+      text-align:center;
+      padding-top: 50px;
+      font-family: sans-serif;
+    }
+
+    #submitButton {
+      background-color: #F5B041;
+      height: 30px;
+      width: 70px;
+    }
+    #nextButton {
+      background-color: lightgray;
+      height: 50px;
+      width: 100px;
+    }
+    #finishButton {
+      background-color: lightgray;
+      height: 50px;
+      width: 100px;
+    }
+    #quizCard {
+      width: 55%;
+      padding: 30px;
+      background-color: white;
+      margin: 0 auto;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Quiz!</h1>
+    <h4> Test your skills by conjugating the verb below for the correct person/tense.</h4>
+    <p> Type your answer in the blank and click submit to check answer. <br>
+      When you are ready to go to the next card, click "next." </p>
+    <div id = "quizCard">
+
+                  <h1 id = "topHalf"> </h1>
+                  <h5 id = "englishHalf"> </h5>
+                  <h3 id = "bottomHalf"> </h3>
+                  <form ID = "answerField">
+                    <label for="answer">Answer:</label>
+                    <input type="text" id="answer" name="answer"><br>
+                  </form>
+                  <p id="feedback"></p>
+                  <button id= "submitButton">Submit</button>
+                  <button id = "playAgainButton">Play Again</button>
+    </div>
+    <p></p>
+    <button id = "nextButton">Next</button>
+    <button id = 'finishButton'>Finish</button>
+    <script src="library.js" charset="utf-8"></script>
+    <script src="verbs.js" charset="utf-8"></script>
+    <script src="quizScript.js" charset="utf-8"></script>
+  </body>
+</html>
