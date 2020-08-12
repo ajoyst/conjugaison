@@ -9,7 +9,7 @@ var feedback = document.getElementById('feedback');
 var next = document.getElementById("nextButton");
 var submit = document.getElementById("submitButton");
 var finish = document.getElementById('finishButton');
-var playAgain = document.getElementByID('playAgainButton');
+var playAgain = document.getElementById('playAgainButton');
 //starting display of finishButton
 finish.style.display = 'none';
 playAgain.style.display = 'none';
@@ -19,16 +19,21 @@ function frontCard () {
   document.getElementById('topHalf').innerHTML = verbs[cardNum].infinitive;
   document.getElementById('englishHalf').innerHTML = verbs[cardNum].translation;
   document.getElementById('bottomHalf').innerHTML = verbs[cardNum].person + ", " + verbs[cardNum].tense;
+  document.getElementById("answerField").style.visibility = "initial";
   feedback.innerHTML = "Submit to check you answer!";
   feedback.style.color = "black";
+  submit.style.visibility = "visible";
 }
 //making end screen
 function finalResults () {
   document.getElementById('topHalf').innerHTML = "Complete!";
   document.getElementById('englishHalf').innerHTML = "dunzo";
   document.getElementById('bottomHalf').innerHTML = "You scored " + correct + "/10";
+  document.getElementById("answerField").style.visibility = "hidden";
   feedback.innerHTML = "Would you like to play again?";
+  submit.style.display = "none";
   playAgain.style.display = "initial";
+  finish.style.display = "none";
 }
 
 //making submitButton work
@@ -36,6 +41,7 @@ submit.addEventListener("click",checkAnswer);
 function checkAnswer() {
   var realAnswer = verbs[cardNum].conjugation;
   var submittedAnswer = document.getElementById('answer').value;
+  submit.style.visibility = "hidden";
 
   if (submittedAnswer === realAnswer) {
     feedback.innerHTML = "Correct!";
@@ -67,9 +73,15 @@ function onNextButtonClick(){
 finish.addEventListener("click",onFinishButtonClick);
 function onFinishButtonClick(){
   finalResults();
-  document.getElementById("answerField").style.display = "none";
+  //document.getElementById("answerField").style.display = "hidden";
 }
 
+//making playAgain button work
+playAgain.addEventListener("click", reRunProgram);
+function reRunProgram(){
+  var cardNum = 0;
+  frontCard();
+}
 
 //starting face of the card
 frontCard();
