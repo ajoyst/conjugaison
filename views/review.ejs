@@ -34,6 +34,21 @@
       display: inline-block;
       font-size: 16px;
     }
+    option.basic {
+      background-color: lightblue;
+    }
+    option.intermediate {
+      background-color: palegreen;
+    }
+    option.advanced {
+      background-color: lemonchiffon;
+    }
+    option.expert {
+      background-color: peachpuff;
+    }
+    option.bonus {
+      background-color: lightcoral;
+    }
     </style>
   </head>
   <body>
@@ -42,8 +57,36 @@
         <h4> Click through the cards to review your tenses.</h4>
         <p> Clicking the card will flip it over the show the answer. <br>
           When you are ready to go to the next card, click "next." </p>
-        //filters for verbs and tenses here eventually//
     </div>
+
+    <form action="/review">
+      <label for="type">Regular/Irregular:</label>
+      <select id="type" name "type">
+        <option value="all"> All </option>
+        <option value="Irregular">Irregular</option>
+        <option value="Regular -er">Regular -ER </option>
+        <option value="Regular -re">Regular -RE </option>
+        <option value="Regular -ir">Regular -IR </option>
+      </select>
+      <label for="tense">Tense/Mood:</label>
+      <select id="tense" name "tense">
+        <option value="all"> All </option>
+        <option class="basic" value="présent indicatif">présent, indicatif</option>
+        <option class="basic" value="passé composé indicatif">passé composé, indicatif</option>
+        <option class="basic" value="futur simple indicatif">futur simple, indicatif</option>
+        <option class="intermediate" value="imparfait indicatif">imparfait, indicatif</option>
+        <option class="intermediate" value="présent conditionnel">présent, conditionnel</option>
+        <option class="intermediate" value="présent impératif">présent, impératif</option>
+        <option class="advanced" value="plus-que-parfait indicatif">plus-que-parfait, indicatif</option>
+        <option class="advanced" value="futur antérieur indicatif">futur antérieur, indicatif</option>
+        <option class="advanced" value="présent subjonctif">présent, subjonctif</option>
+        <option class="expert" value="passé conditionnel">passé, conditionnel</option>
+        <option class="expert" value="passé subjonctif">passé, subjonctif</option>
+        <option class="bonus" value="passé simpe indicatif">passé simple, indicatif</option>
+      </select>
+      <input type="submit">
+    </form>
+
     <div id = "reviewCard">
         <button id = "cardButton">
             <div id = "cardContent">
