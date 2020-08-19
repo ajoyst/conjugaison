@@ -70,21 +70,21 @@
       </select>
       <label for="tense">Tense/Mood:</label>
       <select id="tense" name "tense">
-        <option value="all"> All </option>
-        <option class="basic" value="présent indicatif">présent, indicatif</option>
-        <option class="basic" value="passé composé indicatif">passé composé, indicatif</option>
-        <option class="basic" value="futur simple indicatif">futur simple, indicatif</option>
-        <option class="intermediate" value="imparfait indicatif">imparfait, indicatif</option>
-        <option class="intermediate" value="présent conditionnel">présent, conditionnel</option>
-        <option class="intermediate" value="présent impératif">présent, impératif</option>
-        <option class="advanced" value="plus-que-parfait indicatif">plus-que-parfait, indicatif</option>
-        <option class="advanced" value="futur antérieur indicatif">futur antérieur, indicatif</option>
-        <option class="advanced" value="présent subjonctif">présent, subjonctif</option>
-        <option class="expert" value="passé conditionnel">passé, conditionnel</option>
-        <option class="expert" value="passé subjonctif">passé, subjonctif</option>
-        <option class="bonus" value="passé simpe indicatif">passé simple, indicatif</option>
+        <option value="all_all"> All </option>
+        <option class="basic" id="p" value="présent_indicatif">présent, indicatif</option>
+        <option class="basic" id="pc" value="passé composé_indicatif">passé composé, indicatif</option>
+        <option class="basic" value="futur simple_indicatif">futur simple, indicatif</option>
+        <option class="intermediate" value="imparfait_indicatif">imparfait, indicatif</option>
+        <option class="intermediate" value="présent_conditionnel">présent, conditionnel</option>
+        <option class="intermediate" value="présent_impératif">présent, impératif</option>
+        <option class="advanced" value="plus-que-parfait_indicatif">plus-que-parfait, indicatif</option>
+        <option class="advanced" value="futur antérieur_indicatif">futur antérieur, indicatif</option>
+        <option class="advanced" value="présent_subjonctif">présent, subjonctif</option>
+        <option class="expert" value="passé_conditionnel">passé, conditionnel</option>
+        <option class="expert" value="passé_subjonctif">passé, subjonctif</option>
+        <option class="bonus" value="passé simple_indicatif">passé simple, indicatif</option>
       </select>
-      <input type="submit">
+      <input type="button" value="Apply" id="applyButton">
     </form>
 
     <div id = "reviewCard">
@@ -101,6 +101,7 @@
     <button id = "nextButton">Next</button>
     <p></p>
     <a href="/" id = "homeButton">Return to Home</a>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="library.js" charset="utf-8"></script>
     <script src="verbs.js" charset="utf-8"></script>
     <script src="reviewScript.js" charset="utf-8"></script>

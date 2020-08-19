@@ -49,6 +49,21 @@
       display: inline-block;
       font-size: 16px;
     }
+    option.basic {
+      background-color: lightblue;
+    }
+    option.intermediate {
+      background-color: palegreen;
+    }
+    option.advanced {
+      background-color: lemonchiffon;
+    }
+    option.expert {
+      background-color: peachpuff;
+    }
+    option.bonus {
+      background-color: lightcoral;
+    }
     </style>
   </head>
   <body>
@@ -56,6 +71,35 @@
     <h4> Test your skills by conjugating the verb below for the correct person/tense.</h4>
     <p> Type your answer in the blank and click submit to check answer. <br>
       When you are ready to go to the next card, click "next." </p>
+
+      <form action="/quiz">
+        <label for="type">Regular/Irregular:</label>
+        <select id="type" name "type">
+          <option value="all"> All </option>
+          <option value="Irregular">Irregular</option>
+          <option value="Regular -er">Regular -ER </option>
+          <option value="Regular -re">Regular -RE </option>
+          <option value="Regular -ir">Regular -IR </option>
+        </select>
+        <label for="tense">Tense/Mood:</label>
+        <select id="tense" name "tense">
+          <option value="all_all"> All </option>
+          <option class="basic" id="p" value="présent_indicatif">présent, indicatif</option>
+          <option class="basic" id="pc" value="passé composé_indicatif">passé composé, indicatif</option>
+          <option class="basic" value="futur simple_indicatif">futur simple, indicatif</option>
+          <option class="intermediate" value="imparfait_indicatif">imparfait, indicatif</option>
+          <option class="intermediate" value="présent_conditionnel">présent, conditionnel</option>
+          <option class="intermediate" value="présent_impératif">présent, impératif</option>
+          <option class="advanced" value="plus-que-parfait_indicatif">plus-que-parfait, indicatif</option>
+          <option class="advanced" value="futur antérieur_indicatif">futur antérieur, indicatif</option>
+          <option class="advanced" value="présent_subjonctif">présent, subjonctif</option>
+          <option class="expert" value="passé_conditionnel">passé, conditionnel</option>
+          <option class="expert" value="passé_subjonctif">passé, subjonctif</option>
+          <option class="bonus" value="passé simple_indicatif">passé simple, indicatif</option>
+        </select>
+        <input type="button" value="Apply" id="applyButton">
+      </form>
+
     <div id = "quizCard">
 
                   <h1 id = "topHalf"> </h1>
@@ -74,6 +118,7 @@
     <button id = 'finishButton'>Finish</button>
     <p></p>
     <a href="/" id = "homeButton">Return to Home</a>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="library.js" charset="utf-8"></script>
     <script src="verbs.js" charset="utf-8"></script>
     <script src="quizScript.js" charset="utf-8"></script>
