@@ -17,7 +17,7 @@ var verbs = [
     type: "irregular",
     tense: p,
     infinitive: "Avoir",
-    translation: "(To have)"
+    english: "(To have)"
   },
 
    {
@@ -26,7 +26,7 @@ var verbs = [
     type: "irregular",
     tense: p,
     infinitive: "Être",
-    translation: "(To be)"
+    english: "(To be)"
   },
 
    {
@@ -35,7 +35,7 @@ var verbs = [
     type: "irregular",
     tense: pc,
     infinitive: "Avoir",
-    translation: "(To have)"
+    english: "(To have)"
   },
 
    {
@@ -44,7 +44,7 @@ var verbs = [
     type: "irregular",
     tense: imparfait,
     infinitive: "Être",
-    translation: "(To be)"
+    english: "(To be)"
   },
 
    {
@@ -53,7 +53,7 @@ var verbs = [
     type: "irregular",
     tense: fs,
     infinitive: "Aller",
-    translation: "(To go)"
+    english: "(To go)"
   },
 
   {
@@ -62,7 +62,7 @@ var verbs = [
     type: "irregular",
     tense: pqp,
     infinitive: "Aller",
-    translation: "(To go)"
+    english: "(To go)"
   },
 
    {
@@ -71,7 +71,7 @@ var verbs = [
     type: "irregular",
     tense: p,
     infinitive: "Aller",
-    translation: "(To go)"
+    english: "(To go)"
   },
 
   {
@@ -80,7 +80,7 @@ var verbs = [
     type: "irregular",
     tense: pc,
     infinitive: "Venir",
-    translation: "(To come)"
+    english: "(To come)"
   },
 
   {
@@ -89,7 +89,7 @@ var verbs = [
     type: "regular -er",
     tense: fs,
     infinitive: "Parler",
-    translation: "(To talk)"
+    english: "(To talk)"
   },
 
     {
@@ -98,7 +98,7 @@ var verbs = [
     type: "regular -re",
     tense: pqp,
     infinitive: "Entendre",
-    translation: "(To listen)"
+    english: "(To listen)"
   }
 ]
 
@@ -108,7 +108,7 @@ var avoir1sPres = {
   type: "irregular",
   tense: p,
   infinitive: "Avoir",
-  translation: "To have"
+  english: "To have"
 };
 
 var etre1sPres = {
@@ -117,7 +117,7 @@ var etre1sPres = {
   type: "irregular",
   tense: p,
   infinitive: "Être",
-  translation: "To be"
+  english: "To be"
 };
 
 var avoir3sPC = {
@@ -126,7 +126,7 @@ var avoir3sPC = {
   type: "irregular",
   tense: pc,
   infinitive: "Avoir",
-  translation: "To have"
+  english: "To have"
 };
 /*
 var etre1pImparfait = {
