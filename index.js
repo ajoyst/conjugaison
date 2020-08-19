@@ -10,7 +10,44 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(cors())
 
 const getConjugations = (request, response) => {
-  pool.query('SELECT * FROM conjugations', (error, results) => {
+  var query = 'SELECT * FROM conjugations';
+  var type = request.query.type;
+  console.log(type);
+  var tense = request.query.tense;
+  console.log(tense);
+  var mood = request.query.mood;
+  console.log(mood);
+  //case where neither is all
+  if (type !== 'all' && tense !== 'all'){
+    query = query + ` WHERE type = '${type}' AND tense = '${tense}' AND mood = '${mood}'`
+  }
+  //case where type is all and tense is not
+  else if (type === 'all' && tense !== 'all'){
+    query = query + ` WHERE tense = '${tense}' AND mood = '${mood}'`
+  }
+  //case where type is not all and tense is all
+  else if (type !== 'all' && tense === 'all'){
+    query = query + ` WHERE type = '${type}'`
+  }
+
+  pool.query(query, (error, results) => {
+    if (error) {
+      throw error
+    }
+    
+    response.status(200).json(results.rows)
+  })
+}
+const getIrregularConjugations = (request, response) => {
+  pool.query('SELECT * FROM conjugations WHERE type = "irregular"', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+const getRegularConjugations = (request, response) => {
+  pool.query('SELECT * FROM conjugations WHERE type = "regular - ER" OR type = "regular - RE", OR "regular - IR"', (error, results) => {
     if (error) {
       throw error
     }
@@ -37,6 +74,9 @@ app.get('/quiz', function(req, res) {
 });
 app.get('/overview', function(req, res) {
     res.render('overview', {});
+});
+app.get('/irregular', function(req, res) {
+    res.render('irregular', {});
 });
 
 app
