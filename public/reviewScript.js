@@ -1,6 +1,55 @@
 background (209, 233, 255);
-//making a starting value for i
+// verbs array
+var verbs;
+//creating shuffle function for verb array
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+//make apply button for filters function
+var typeInput = document.getElementById('type');
+var tenseInput = document.getElementById('tense');
+var apply = document.getElementById("applyButton");
+//making the review filters work
+apply.addEventListener("click", applyFilter);
+function applyFilter() {
+  console.log(typeInput.value, ',', tenseInput.value);
+  var tenseMood = tenseInput.value.split('_');
+  var url = '/conjugations';
+  console.log(url);
+  $.ajax({
+      method: 'GET',
+      url: url,
+      data: {
+        type: typeInput.value,
+        tense: tenseMood[0],
+        mood: tenseMood[1]
+      },
+      success: (response) => {
+        console.log(response);
+        shuffle(response);
+        verbs = response;
+        cardNum = 0;
+        cardIsFlipped = false;
+        frontCard();
+        }
+      })
+    }
+//making a starting value for i and making verbs the response
 var cardNum = 0;
+console.log(verbs);
+
+
 //making a value for front/back of card (0=front; 1=back)
 var cardIsFlipped= false;
 //making the buttons variables
@@ -11,7 +60,7 @@ var next = document.getElementById("nextButton");
 //making the info on front of card a function
 function frontCard () {
   document.getElementById('topHalf').innerHTML = verbs[cardNum].infinitive;
-  document.getElementById('englishHalf').innerHTML = verbs[cardNum].translation;
+  document.getElementById('englishHalf').innerHTML = verbs[cardNum].english;
   document.getElementById('bottomHalf').innerHTML = verbs[cardNum].person + ", " + verbs[cardNum].tense;
 }
 //making info for back of card
@@ -43,7 +92,7 @@ function onNextButtonClick(){
     next.style.display = "none";
   //if now on second card- show back quizButton
   } else if (cardNum ===1){
-      showBackButton();
+      back.style.display = "initial";
   }
 }
 //to flip the card front/backCard
@@ -58,49 +107,22 @@ function flipCard() {
     cardIsFlipped = true;
   }
 }
+
+// $('apply').on('click', (e) => {
+//   console.log(window.location.host + '\conjugations');
+//   $.ajax({
+//     method: 'GET',
+//     url: window.location.host + '\conjugations',
+//     data: {
+//       type: typeInput,
+//       tense: tenseInput
+//     },
+//     success: () => {
+//       console.log(typeInput.value , tenseInput.value);
+//     }
+//   })
+//
+// })
+
 //starting face of the card
 frontCard();
-
-//this begins the game
-
-
-console.log("Nothing wrong yet");
-
-
-/*
-// "verbs" array
-
-var cardIsFlipped = false;
-var cardNum = 0;
-
-var mainTitle = document.getElementById("mainTitle");
-var leftText = document.getElementById("leftText");
-var rightText = document.getElementById("rightText");
-
-function onBackButtonClick(e){
-  cardNum--;
-  if (cardNum === 0) {
-    hideBackButton();
-  }
-  populateCard();
-}
-
-function populateCard(){
-  mainTitle.text = verbs[cardNum].verbInfinitive;
-  leftText.text = verbs[cardNum].person;
-  rightText.text = verbs[cardNum].otherInfo;
-}
-
-function populateBackOfCard(){
-  mainTitle.text = verbs[cardNum].conjugation;
-  leftText.text = "";
-  rightText.text = "";
-}
-
-function onNextButtonClick(e){
-  cardNum++;
-
-  // if on last card - hide next button
-  if (cardNum === 9) {
-    hideNextButton();
-*/
