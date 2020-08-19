@@ -1,4 +1,53 @@
 background (209, 233, 255);
+// verbs array
+var verbs;
+//creating shuffle function for verb array
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+//make apply button for filters function
+var typeInput = document.getElementById('type');
+var tenseInput = document.getElementById('tense');
+var apply = document.getElementById("applyButton");
+//making the review filters work
+apply.addEventListener("click", applyFilter);
+function applyFilter() {
+  console.log(typeInput.value, ',', tenseInput.value);
+  var tenseMood = tenseInput.value.split('_');
+  var url = '/conjugations';
+  console.log(url);
+  $.ajax({
+      method: 'GET',
+      url: url,
+      data: {
+        type: typeInput.value,
+        tense: tenseMood[0],
+        mood: tenseMood[1]
+      },
+      success: (response) => {
+        console.log(response);
+        shuffle(response);
+        verbs = response;
+        cardNum = 0;
+        cardIsFlipped = false;
+        frontCard();
+        }
+      })
+    }
+//making a starting value for i and making verbs the response
+console.log(verbs);
+
 //counting variables
 var cardNum = 0;
 var correct = 0;
@@ -17,7 +66,7 @@ playAgain.style.display = 'none';
 //making the info on front of card a function
 function frontCard () {
   document.getElementById('topHalf').innerHTML = verbs[cardNum].infinitive;
-  document.getElementById('englishHalf').innerHTML = verbs[cardNum].translation;
+  document.getElementById('englishHalf').innerHTML = verbs[cardNum].english;
   document.getElementById('bottomHalf').innerHTML = verbs[cardNum].person + ", " + verbs[cardNum].tense;
   document.getElementById("answerField").style.visibility = "initial";
   feedback.innerHTML = "Submit to check you answer!";
@@ -64,7 +113,7 @@ function onNextButtonClick(){
   frontCard();
   document.getElementById("answerField").reset();
   //if on last card, display finishButton
-  if (cardNum === verbs.length-1){
+  if (cardNum === 9){
     next.style.display = "none";
     finish.style.display = "initial";
   }
