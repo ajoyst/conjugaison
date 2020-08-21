@@ -67,7 +67,7 @@ playAgain.style.display = 'none';
 function frontCard () {
   document.getElementById('topHalf').innerHTML = verbs[cardNum].infinitive;
   document.getElementById('englishHalf').innerHTML = verbs[cardNum].english;
-  document.getElementById('bottomHalf').innerHTML = verbs[cardNum].person + ", " + verbs[cardNum].tense;
+  document.getElementById('bottomHalf').innerHTML = verbs[cardNum].person + ", " + verbs[cardNum].tense + ", " + verbs[cardNum].mood;
   document.getElementById("answerField").style.visibility = "initial";
   feedback.innerHTML = "Submit to check you answer!";
   feedback.style.color = "black";
@@ -90,10 +90,11 @@ submit.addEventListener("click",checkAnswer);
 function checkAnswer() {
   var realAnswer = verbs[cardNum].conjugation;
   var submittedAnswer = document.getElementById('answer').value;
+  var result = realAnswer.localeCompare(submittedAnswer, 'en', { sensitivity: 'base' });
   submit.style.visibility = "hidden";
 
-  if (submittedAnswer === realAnswer) {
-    feedback.innerHTML = "Correct!";
+  if (result === 0) {
+    feedback.innerHTML = "Correct!   " + verbs[cardNum].conjugation;
     feedback.style.color = "green";
     correct ++;
   }
@@ -103,7 +104,6 @@ function checkAnswer() {
     feedback.style.color = "red";
     wrong ++;
   }
-
 }
 
 //making nextButton work

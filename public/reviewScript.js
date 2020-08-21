@@ -61,7 +61,7 @@ var next = document.getElementById("nextButton");
 function frontCard () {
   document.getElementById('topHalf').innerHTML = verbs[cardNum].infinitive;
   document.getElementById('englishHalf').innerHTML = verbs[cardNum].english;
-  document.getElementById('bottomHalf').innerHTML = verbs[cardNum].person + ", " + verbs[cardNum].tense;
+  document.getElementById('bottomHalf').innerHTML = verbs[cardNum].person + ", " + verbs[cardNum].tense+ ", " + verbs[cardNum].mood;
 }
 //making info for back of card
 function backCard () {
