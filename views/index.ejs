@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Conjugaison!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
     #mainMenu {
@@ -10,19 +11,31 @@
       padding-top: 100px;
       font-family: sans-serif;
     }
+    h1 {
+      font-weight: bold;
+      font-style: italic;
+    }
     </style>
   </head>
   <body>
-
-    <div id = "mainMenu">
-        <h1> Conjugaison!</h>
-        <p>
-        <a href="overview" id="overviewButton"> Verbs Overview</a>
-        <a href="review" id="reviewButton">Review with Flash Cards</a>
-        <a href="quiz" id="quizButton">Quiz!</a>
-        </p>
+  <div class="container">
+    <div class="row" id = "mainMenu">
+        <div class="col-md-12">
+          <h1> Conjugaison!</h>
+        </div>
     </div>
-
+    <div class"row row-no-gutters">
+        <div class="col-xs-12 col-md-4">
+          <a href="overview" class="btn-block" id="overviewButton"> Verbs Overview</a>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <a href="review" class="btn-block" id="reviewButton">Review with Flash Cards</a>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <a href="quiz" class="btn-block" id="quizButton">Quiz!</a>
+        </div>
+    </div>
+  </div>
     <script src="library.js" charset="utf-8"></script>
     <script src="verbs.js" charset="utf-8"></script>
     <script src="script.js" charset="utf-8"></script>
