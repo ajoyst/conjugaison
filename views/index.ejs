@@ -15,6 +15,18 @@
       font-weight: bold;
       font-style: italic;
     }
+    @media (max-width: 600px) {
+      #mainMenu {
+        height: 25vh;
+        padding-top: 30px
+      }
+      #mainButtons {
+        height:75vh;
+        line-height: 20vh;
+        padding: 1em;
+        padding-bottom: 1em;
+      }
+    }
     </style>
   </head>
   <body>
@@ -24,7 +36,7 @@
           <h1> Conjugaison!</h>
         </div>
     </div>
-    <div class"row row-no-gutters">
+    <div class"row" id="mainButtons">
         <div class="col-xs-12 col-md-4">
           <a href="overview" class="btn-block" id="overviewButton"> Verbs Overview</a>
         </div>
