@@ -94,7 +94,7 @@ function checkAnswer() {
   submit.style.visibility = "hidden";
 
   if (result === 0) {
-    feedback.innerHTML = "Correct!   " + verbs[cardNum].conjugation;
+    feedback.innerHTML = "Correct! "+ verbs[cardNum].conjugation;
     feedback.style.color = "green";
     correct ++;
   }
