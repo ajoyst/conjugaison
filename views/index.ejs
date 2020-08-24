@@ -16,23 +16,44 @@
       font-style: italic;
     }
     @media (max-width: 600px) {
-      #mainMenu {
-        height: 25vh;
-        padding-top: 30px
+      body {
+        margin: 5vh;
       }
-      #mainButtons {
-        height:75vh;
-        line-height: 20vh;
-        padding: 1em;
-        padding-bottom: 1em;
+      .btn-block {
+        height: 25vh;
+        margin-bottom: 6vh;
+      }
+      #mainMenu {
+        height: 10vh;
+        padding: 0px;
+      }
+      h1 {
+        font-size: 4em;
+        padding-top: 0vh;
+        margin-bottom: 7vh;
+      }
+      #quizButton {
+        padding: 10vh;
+        border-radius: 0.5em;
+        font-size: 1.5em;
+      }
+      #reviewButton {
+        font-size: 1.5em;
+        padding: 10vh;
+        border-radius: 0.5em;
+      }
+      #overviewButton {
+        padding: 10vh;
+        font-size: 1.5em;
+        border-radius: 0.5em;
       }
     }
     </style>
   </head>
   <body>
-  <div class="container">
+  <div class="flex-container">
     <div class="row" id = "mainMenu">
-        <div class="col-md-12">
+        <div class="col-xs-12 col-md-12">
           <h1> Conjugaison!</h>
         </div>
     </div>
