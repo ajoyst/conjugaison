@@ -14,13 +14,13 @@
       height: 300px;
       width: 500px;
     }
-    #backButton {
+    .gameButtons {
       background-color: lightgray;
       height: 50px;
       width: 100px;
     }
-    #nextButton {
-      background-color: lightgray;
+    .endButtons {
+      background-color: lemonChiffon;
       height: 50px;
       width: 100px;
     }
@@ -97,8 +97,13 @@
         </button>
     </div>
     <p></p>
-    <button id = "backButton">Back</button>
-    <button id = "nextButton">Next</button>
+    <button class = "gameButtons" id = "backButton">Back</button>
+    <button class = "gameButtons" id = "nextButton">Next</button>
+    <button class = "endButtons" id = "reviewSame">Review these cards again</button>
+    <button class = "endButtons" id = "reviewFresh">Review fresh cards</button>
+    <button onclick="window.location.href = '/quiz?verbs[0][0]&verbs[1][0]&verbs[2][0]&verbs[3][0]';" class = "endButtons" id = "quizSame">Quiz these same cards</button>
+
+
     <p></p>
     <a href="/" id = "homeButton">Return to Home</a>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
