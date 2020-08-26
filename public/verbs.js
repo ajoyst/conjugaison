@@ -9,6 +9,25 @@ var s = "subjonctif";
 var c = "conditionnel";
 var imperatif = "impératif";
 
+var dictionary= {
+  "all": "all",
+  "Irregular": "Irregular",
+  "Regular_-ER": "Regular -er",
+  "Regular_-RE": "Regular -re",
+  "Regular_-IR": "Regular -ir",
+  "present": "présent",
+  "passe_compose": "passé composé",
+  "passe_simple": "passé simple",
+  "passe": "passé",
+  "futur_simple": "futur simple",
+  "imparfait": "imparfait",
+  "plus_que_parfait": "plus-que-parfait",
+  "futur_anterieur": "futur antérieur",
+  "indicatif": "indicatif",
+  "conditionnel": "conditionnel",
+  "subjonctif": "subjonctif",
+  "imperatif": "imperatif"
+}
 
 var verbs = [
    {
