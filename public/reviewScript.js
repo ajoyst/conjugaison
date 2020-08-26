@@ -44,6 +44,10 @@ function applyFilter() {
         frontCard();
         }
       })
+      next.style.display = "initial";
+      same.style.display = "none";
+      fresh.style.display = "none";
+      quiz.style.display = "none";
     }
 //making a starting value for i and making verbs the response
 var cardNum = 0;
@@ -56,6 +60,9 @@ var cardIsFlipped= false;
 var card = document.getElementById("cardButton");
 var back = document.getElementById("backButton");
 var next = document.getElementById("nextButton");
+var same = document.getElementById("reviewSame");
+var fresh = document.getElementById("reviewFresh");
+var quiz = document.getElementById("quizSame");
 
 //making the info on front of card a function
 function frontCard () {
@@ -69,8 +76,12 @@ function backCard () {
   document.getElementById('englishHalf').innerHTML = " ";
   document.getElementById('bottomHalf').innerHTML = " ";
 }
-//making backbutton invisible at starting
+//making other buttons invisible at starting
 back.style.display = "none";
+same.style.display = "none";
+fresh.style.display = "none";
+quiz.style.display = "none";
+
 //making the backButton work
 back.addEventListener("click",onBackButtonClick);
 function onBackButtonClick() {
@@ -81,15 +92,42 @@ function onBackButtonClick() {
   }
   frontCard();
 }
+//making the reviewSame button work
+same.addEventListener("click",onSameButtonClick);
+function onSameButtonClick() {
+  cardNum = 0;
+  frontCard();
+  next.style.display = "initial";
+  same.style.display = "none";
+  fresh.style.display = "none";
+  quiz.style.display = "none";
+}
+//making the reviewFresh button work by activating applyFilter and resetting buttons
+fresh.addEventListener("click", onFreshButtonClick);
+function onFreshButtonClick () {
+  applyFilter();
+  next.style.display = "initial";
+  same.style.display = "none";
+  fresh.style.display = "none";
+  quiz.style.display = "none";
+}
+//making quiz button work
+function onQuizButtonClick(){
+  location.href = `/quiz?verbs=${verbs[0].id}_${verbs[1].id}_${verbs[2].id}_${verbs[3].id}_${verbs[4].id}_${verbs[5].id}_${verbs[6].id}_${verbs[7].id}_${verbs[8].id}_${verbs[9].id}`;
+}
 //making nextButton work
 next.addEventListener("click",onNextButtonClick);
 function onNextButtonClick(){
   cardNum++;
   frontCard();
   back.style.display = "initial";
-  //if on last card, hide nextButton
-  if (cardNum === verbs.length-1){
+  //if on last card, hide nextButton and produce ending buttons
+  if (cardNum === 9){
     next.style.display = "none";
+    back.style.display = "none";
+    same.style.display = "initial";
+    fresh.style.display = "initial";
+    quiz.style.display = "initial";
   //if now on second card- show back quizButton
   } else if (cardNum ===1){
       back.style.display = "initial";
@@ -108,21 +146,56 @@ function flipCard() {
   }
 }
 
-// $('apply').on('click', (e) => {
-//   console.log(window.location.host + '\conjugations');
-//   $.ajax({
-//     method: 'GET',
-//     url: window.location.host + '\conjugations',
-//     data: {
-//       type: typeInput,
-//       tense: tenseInput
-//     },
-//     success: () => {
-//       console.log(typeInput.value , tenseInput.value);
-//     }
-//   })
-//
-// })
+//create function for checking for query
+function checkQuery() {
+  var queryCheck = location.href.split("?");
+  if (queryCheck.length === 2) {
+    console.log("There is a query");
+    var setOfQueries = queryCheck[1];
+    //differenciate between filter and review query
+      console.log("running filter query");
+      var individualQueries =setOfQueries.split("&");
+      var data = {}
+      for (i = 0; i<individualQueries.length; i++) {
+        let keyPair = individualQueries[i].split("=");
+        let key = keyPair[0];
+        console.log(key);
+        let value = keyPair[1];
+        console.log(value);
+        console.log(data);
+        data[key]=dictionary[value];
+        console.log(data[key]);
+    }
+    console.log(data);
+    //ajax call for filtering cards based of queries
+      //variables
+    var url = '/conjugations';
+    $.ajax({
+        method: 'GET',
+        url: url,
+        data: {
+          type: data.type,
+          tense: data.tense,
+          mood: data.mood
+        },
+        success: (response) => {
+          console.log(response);
+          shuffle(response);
+          verbs = response;
+          cardNum = 0;
+          cardIsFlipped = false;
+          frontCard();
+          }
+        })
+  }
+  else {
+    console.log("There is no query");
+  }
+
+}
+
 
 //starting face of the card
 frontCard();
+checkQuery();
+//running filtered cards if query
