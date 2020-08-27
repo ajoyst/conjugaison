@@ -113,7 +113,7 @@ function onFreshButtonClick () {
 }
 //making quiz button work
 function onQuizButtonClick(){
-  location.href = `/quiz?verbs=${verbs[0].id}_${verbs[1].id}_${verbs[2].id}_${verbs[3].id}_${verbs[4].id}_${verbs[5].id}_${verbs[6].id}_${verbs[7].id}_${verbs[8].id}_${verbs[9].id}`;
+  location.href = `/quiz?id=${verbs[0].id}_${verbs[1].id}_${verbs[2].id}_${verbs[3].id}_${verbs[4].id}_${verbs[5].id}_${verbs[6].id}_${verbs[7].id}_${verbs[8].id}_${verbs[9].id}`;
 }
 //making nextButton work
 next.addEventListener("click",onNextButtonClick);
@@ -165,7 +165,7 @@ function checkQuery() {
         console.log(data);
         data[key]=dictionary[value];
         console.log(data[key]);
-    }
+      }
     console.log(data);
     //ajax call for filtering cards based of queries
       //variables
