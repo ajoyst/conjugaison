@@ -132,47 +132,59 @@ function reRunProgram(){
   frontCard();
 }
 
-//starting face of the card
-frontCard();
+function checkQuery() {
+  var queryCheck = location.href.split("?");
+  if (queryCheck.length === 2) {
+    console.log("There is a query");
+    var setOfQueries = queryCheck[1];
+      console.log("running review query");
+      // var findingKey = setOfQueries.split("=");
+      // var individualQueries = findingKey[1].split("_");
+      // var data = {}
+      // for (i = 0; i<individualQueries.length; i++) {
+      //   let key = findingKey[0];
+      //   console.log(key);
+      //   let value = individualQueries[i];
+      //   console.log(value);
+      //   console.log(data);
+      //   data[key]=dictionary[value];
+      //   console.log(data[key]);
+      // }
+      var queryKey = setOfQueries.split("=");
+      var individualQueries = queryKey[1].split("_");
+      var data = []
+      for (i = 0; i<individualQueries.length; i++) {
+        let verbID = individualQueries[i];
+        console.log(verbID);
+        data[i] = verbID; //wont work if I put dictionary in it
+        console.log(data[i]);
+      }
+      console.log(data);
+      console.log(data[0] + data[1]);
+    //ajax call for filtering cards based of queries
+    var url = '/conjugations';
+    $.ajax({
+        method: 'GET',
+        url: url,
+        data: {
+          id: data
+        },
+        success: (response) => {
+          console.log(response);
+          //shuffle(response);
+          verbs = response;
+          cardNum = 0;
+          cardIsFlipped = false;
+          frontCard();
+          }
+      })
+  }
+  else {
+    console.log("There is no query");
+  }
 
-
-
-
-
-/* Lillian's example for entering text and checking
-const handlePostNewCommentButton = (e) => {
-  let currentPath = e.view.window.location.pathname;
-  let comment = document.getElementsByClassName('addCommentTextarea')[0].value;
-  let userNameForComment = document.getElementsByClassName('userUsernameInput')[0].id.split('-')[1];
-  let userIdForComment = document.getElementsByClassName('userObjectIdInput')[0].id.split('-')[1];
-  let url = '/api/v1/techniques/' + e.target.dataset.techniqueid;
-  let currentDate = getCurrentDate();
-  $.ajax({
-    method: 'POST',
-    url: url,
-    data: {
-      comment: comment,
-      userName: userNameForComment,
-      userId: userIdForComment,
-      date: currentDate
-    },
-    success: (json) => {
-      document.getElementsByClassName('addCommentTextarea')[0].value = "";
-      window.location = window.location.href;
-    },
-    error: () => {
-      console.log("ajax post comment error");
-    }
-  })
 }
 
-
-
-CharCode exmaple
-
-"être".charCodeAt(0);
-234
-String.fromCharCode(234);
-"ê"
-
-*/
+//starting face of the card
+frontCard();
+checkQuery();
