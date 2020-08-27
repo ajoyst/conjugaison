@@ -26,7 +26,8 @@ var dictionary= {
   "indicatif": "indicatif",
   "conditionnel": "conditionnel",
   "subjonctif": "subjonctif",
-  "imperatif": "imperatif"
+  "imperatif": "imperatif",
+  "id": "id"
 }
 
 var verbs = [
