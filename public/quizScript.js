@@ -162,7 +162,7 @@ function checkQuery() {
       console.log(data);
       console.log(data[0] + data[1]);
     //ajax call for filtering cards based of queries
-    var url = '/conjugations';
+    var url = '/conjugations_by_id';
     $.ajax({
         method: 'GET',
         url: url,
