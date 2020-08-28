@@ -19,8 +19,7 @@ const getConjugations = (request, response) => {
   console.log(tense);
   var mood = request.query.mood;
   console.log(mood);
-  var id = request.query.id;
-  console.log(id);
+
   //case where neither is all
   if (type !== 'all' && tense !== 'all'){
     query = query + ` WHERE type = '${type}' AND tense = '${tense}' AND mood = '${mood}'`
@@ -33,13 +32,6 @@ const getConjugations = (request, response) => {
   else if (type !== 'all' && tense === 'all'){
     query = query + ` WHERE type = '${type}'`
   }
-  // case where you are looking for IDs, not types
-  else if (id === 'id'){
-    //query = query + `WHERE id = '${id[0]}' OR id =  '${id[1]}' OR id = '${id[2]}' OR id = '${id[3]}' OR id = '${id[4]}' OR id = '${id[5]}' OR id = '${id[6]}' OR id =  '${id[7]}' OR id =  '${id[8]}' OR id =  '${id[9]}'`
-    //query = query + `WHERE id = '${id}'`
-    //query = query + `WHERE id = '${id}'`
-    query = query + `WHERE id IN ${id[0], id[1], id[2], id[3], id[4], id[5], id[6], id[7], id[8], id[9]}`
-  }
 
   pool.query(query, (error, results) => {
     if (error) {
@@ -50,6 +42,27 @@ const getConjugations = (request, response) => {
   })
 }
 
+const getConjugationsById = (request, response) => {
+  var query = 'SELECT * FROM conjugations';
+  var id = request.query.id;
+  console.log(id);
+
+  // case where you are looking for IDs, not types
+    //query = query + `WHERE id = '${id[0]}' OR id =  '${id[1]}' OR id = '${id[2]}' OR id = '${id[3]}' OR id = '${id[4]}' OR id = '${id[5]}' OR id = '${id[6]}' OR id =  '${id[7]}' OR id =  '${id[8]}' OR id =  '${id[9]}'`
+    //query = query + `WHERE id = '${id}'`
+    console.log("made it to id");
+    //query = query + `WHERE id = '${id}'`
+    query = query + ` WHERE id IN (${id[0]}, ${id[1]}, ${id[2]}, ${id[3]}, ${id[4]}, ${id[5]}, ${id[6]}, ${id[7]}, ${id[8]}, ${id[9]})`
+    console.log(query);
+
+  pool.query(query, (error, results) => {
+    if (error) {
+      throw error
+    }
+
+    response.status(200).json(results.rows)
+  })
+}
 
 // const getIrregularConjugations = (request, response) => {
 //   pool.query('SELECT * FROM conjugations WHERE type = "irregular"', (error, results) => {
@@ -96,6 +109,10 @@ app
   .route('/conjugations')
   // GET endpoint
   .get(getConjugations)
+
+app
+  .route('/conjugations_by_id')
+  .get(getConjugationsById)
 
 // Start server
 app.listen(process.env.PORT || 3002, () => {
