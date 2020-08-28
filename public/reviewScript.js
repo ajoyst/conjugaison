@@ -194,8 +194,7 @@ function checkQuery() {
 
 }
 
-
 //starting face of the card
 frontCard();
+//checking for any filters 
 checkQuery();
-//running filtered cards if query

@@ -122,7 +122,6 @@ function onNextButtonClick(){
 finish.addEventListener("click",onFinishButtonClick);
 function onFinishButtonClick(){
   finalResults();
-  //document.getElementById("answerField").style.display = "hidden";
 }
 
 //making playAgain button work
@@ -138,18 +137,7 @@ function checkQuery() {
     console.log("There is a query");
     var setOfQueries = queryCheck[1];
       console.log("running review query");
-      // var findingKey = setOfQueries.split("=");
-      // var individualQueries = findingKey[1].split("_");
-      // var data = {}
-      // for (i = 0; i<individualQueries.length; i++) {
-      //   let key = findingKey[0];
-      //   console.log(key);
-      //   let value = individualQueries[i];
-      //   console.log(value);
-      //   console.log(data);
-      //   data[key]=dictionary[value];
-      //   console.log(data[key]);
-      // }
+
       var queryKey = setOfQueries.split("=");
       var individualQueries = queryKey[1].split("_");
       var data = []

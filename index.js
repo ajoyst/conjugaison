@@ -47,11 +47,7 @@ const getConjugationsById = (request, response) => {
   var id = request.query.id;
   console.log(id);
 
-  // case where you are looking for IDs, not types
-    //query = query + `WHERE id = '${id[0]}' OR id =  '${id[1]}' OR id = '${id[2]}' OR id = '${id[3]}' OR id = '${id[4]}' OR id = '${id[5]}' OR id = '${id[6]}' OR id =  '${id[7]}' OR id =  '${id[8]}' OR id =  '${id[9]}'`
-    //query = query + `WHERE id = '${id}'`
     console.log("made it to id");
-    //query = query + `WHERE id = '${id}'`
     query = query + ` WHERE id IN (${id[0]}, ${id[1]}, ${id[2]}, ${id[3]}, ${id[4]}, ${id[5]}, ${id[6]}, ${id[7]}, ${id[8]}, ${id[9]})`
     console.log(query);
 
@@ -63,23 +59,6 @@ const getConjugationsById = (request, response) => {
     response.status(200).json(results.rows)
   })
 }
-
-// const getIrregularConjugations = (request, response) => {
-//   pool.query('SELECT * FROM conjugations WHERE type = "irregular"', (error, results) => {
-//     if (error) {
-//       throw error
-//     }
-//     response.status(200).json(results.rows)
-//   })
-// }
-// const getRegularConjugations = (request, response) => {
-//   pool.query('SELECT * FROM conjugations WHERE type = "regular - ER" OR type = "regular - RE", OR "regular - IR"', (error, results) => {
-//     if (error) {
-//       throw error
-//     }
-//     response.status(200).json(results.rows)
-//   })
-// }
 
 var path = require('path');
 
