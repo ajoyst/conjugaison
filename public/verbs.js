@@ -32,6 +32,7 @@ var dictionary= {
 
 var verbs = [
    {
+    id: 12280,
     conjugation: "ai",
     person: "je",
     type: "irregular",
@@ -42,6 +43,7 @@ var verbs = [
   },
 
    {
+    id: 16141,
     conjugation: "suis",
     person: "je",
     type: "irregular",
@@ -52,6 +54,7 @@ var verbs = [
   },
 
    {
+    id: 12306,
     conjugation: "a eu",
     person: "il/elle",
     type: "irregular",
@@ -62,6 +65,7 @@ var verbs = [
   },
 
    {
+    id: 16150,
     conjugation: "étions",
     person: "nous",
     type: "irregular",
@@ -72,6 +76,7 @@ var verbs = [
   },
 
    {
+    id: 12779,
     conjugation: "iras",
     person: "tu",
     type: "irregular",
@@ -82,6 +87,7 @@ var verbs = [
   },
 
   {
+    id: 12791,
     conjugation: "étais allé(e)",
     person: "tu",
     type: "irregular",
@@ -92,6 +98,7 @@ var verbs = [
   },
 
    {
+    id: 12765,
     conjugation: "vont",
     person: "ils/elles",
     type: "irregular",
@@ -102,6 +109,7 @@ var verbs = [
   },
 
   {
+    id: 13062,
     conjugation: "est venu(e)",
     person: "il/elle",
     type: "irregular",
@@ -112,6 +120,7 @@ var verbs = [
   },
 
   {
+    id: 16853,
     conjugation: "parlerez",
     person: "vous",
     type: "regular -er",
@@ -122,6 +131,7 @@ var verbs = [
   },
 
     {
+    id: 21489,
     conjugation: "avaient entendu",
     person: "ils/elles",
     type: "regular -re",
